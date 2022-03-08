@@ -1,1 +1,10 @@
+@import "./helpers/_fonts";
+@import "./helpers/_variables.scss";
+
+$primary: $acme-red;
+$secondary: $desert-orange;
+$dark: $night-black;
+$light: $lighter-gray;
+
 @import "~bootstrap/scss/bootstrap";
+
