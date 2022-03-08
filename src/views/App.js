@@ -5,10 +5,15 @@ import { BrowserRouter as Router,
    Link
 } from "react-router-dom";
 
+import {
+   Header
+} from './'
+
 const App = () => {
    return (
       <Router>
-         <div>Setup</div>;
+         <Header></Header>
+         <div>Setup</div>
       </Router>
    )
 };
