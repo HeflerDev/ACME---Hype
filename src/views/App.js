@@ -6,14 +6,15 @@ import { BrowserRouter as Router,
 } from "react-router-dom";
 
 import {
-   Header
+   Header,
+   MobileFooter
 } from './'
 
 const App = () => {
    return (
       <Router>
-         <Header></Header>
-         <div>Setup</div>
+         <Header />
+         <MobileFooter />
       </Router>
    )
 };

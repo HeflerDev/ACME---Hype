@@ -1,9 +1,10 @@
 import React from 'react'
+import { Col, Row } from 'react-bootstrap'
 
-const Products = () => {
-  return {
+export const Products = () => {
+  return (
       <div className="product-container">
-        
+        null
       </div>
-  }
+  )
 }

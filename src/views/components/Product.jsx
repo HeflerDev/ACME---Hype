@@ -13,5 +13,5 @@ export const Product = ({ name, image, status }) => (
 Product.propTypes = {
   name: PropTypes.string.isRequired,
   image: PropTypes.string.isRequired,
-  status: PropTypes.bool.isRequired,
+  status: PropTypes.bool.isRequired
 }
