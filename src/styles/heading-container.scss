@@ -1,0 +1,17 @@
+.heading-container {
+  display: flex;
+  justify-content: space-around;
+  font-family: topsecret;
+  color: $primary;
+
+  > .heading {
+    margin: 10px 0;
+    font-size: 36px;
+  }
+
+  > .small {
+    font-family: skullts2;
+    font-size: 24px;
+    margin: auto;
+  }
+}

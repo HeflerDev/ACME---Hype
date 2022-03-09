@@ -1,0 +1,11 @@
+.footer-icons {
+  display: flex;
+  justify-content: space-around;
+  padding: 5px;
+  background-color: $neutral;
+  position: sticky;
+  bottom: 0;
+  > .icon {
+    width: 24px;
+  }
+}

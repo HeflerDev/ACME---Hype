@@ -1,7 +1,7 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 
-export const ListIcon = ({
+export const DisabledLikeIcon = ({
   size = '100%',
   color = 'black'
 }) => (
@@ -10,7 +10,7 @@ export const ListIcon = ({
 </svg>
 )
 
-ListIcon.propTypes = {
+DisabledLikeIcon.propTypes = {
   size: PropTypes.string,
   color: PropTypes.string
 }

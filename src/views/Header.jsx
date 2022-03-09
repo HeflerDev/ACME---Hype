@@ -11,16 +11,19 @@ import {
 export const Header = () => {
   return (
       <Row>
-         <Col xs={12}>
-            <h1>ACME</h1>
-            <h2>A COMPANY THAT MAKES EVERYTHING</h2>
+         <Col xs={12} className="heading-container">
+            <h1 className="heading">ACME</h1>
+            <h2 className="heading small">a company that makes everything</h2>
          </Col>
          <SearchBar/>
         <nav className="navbar-container">
-          <div className="item">POPULAR</div>
-          <div className="item">UTILIDADES</div>
-          <div className="item">PARA PLANOS INFALÍVEIS</div>
-          <div className="item">OUTROS </div>
+          <div className="item">popular</div>
+          <div className="item separator">|</div>
+          <div className="item">utilidades</div>
+          <div className="item separator">|</div>
+          <div className="item big"><span>para planos infalíveis</span></div>
+          <div className="item separator">|</div>
+          <div className="item">outros</div>
         </nav>
       </Row>
   )

@@ -3,8 +3,17 @@
 
 $primary: $acme-red;
 $secondary: $desert-orange;
+$neutral: $commom-gray;
 $dark: $night-black;
-$light: $lighter-gray;
+$light: whitesmoke;
+
+.row {
+  padding:0 !important;
+  margin: 0 !important;
+}
 
 @import "~bootstrap/scss/bootstrap";
-
+@import "./footer-icons.scss";
+@import "./navbar-container.scss";
+@import "./heading-container.scss";
+@import "./search-bar.scss";

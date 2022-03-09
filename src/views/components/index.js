@@ -1,2 +1,2 @@
-export {Product} from './Product.jsx'
-export {SearchBar} from './SearchBar.jsx'
+export { Product } from './Product.jsx'
+export { SearchBar } from './SearchBar.jsx'

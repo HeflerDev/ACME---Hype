@@ -1,13 +1,22 @@
 import React from 'react'
 import { Col } from 'react-bootstrap'
-import { UserIcon } from '../assets/icons'
+import { UserIcon, BagIcon, DisabledLikeIcon, EnabledLikeIcon, FilterIcon, HouseIcon, ListIcon } from '../assets/icons'
 
 export const MobileFooter = () => {
   return (
     <Col className="footer-icons">
-      <div className="home icon"></div>
-      <div className="categoryes icon"></div>
-      <div className="favorites icon"></div>
+      <div className="home icon">
+        <HouseIcon />
+      </div>
+      <div className="categories icon">
+          <ListIcon />
+      </div>
+      <div className="favorites icon">
+        <EnabledLikeIcon />
+      </div>
+      <div className="bag icon">
+        <BagIcon />
+      </div>
       <div className="user icon">
         <UserIcon />
       </div>
