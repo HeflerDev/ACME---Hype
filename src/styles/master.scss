@@ -12,8 +12,14 @@ $light: whitesmoke;
   margin: 0 !important;
 }
 
+body {
+  background-color: $sand-yellow !important;
+}
+
 @import "~bootstrap/scss/bootstrap";
 @import "./footer-icons.scss";
 @import "./navbar-container.scss";
 @import "./heading-container.scss";
 @import "./search-bar.scss";
+@import "./product-container.scss";
+@import "./products-container.scss";

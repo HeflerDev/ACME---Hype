@@ -28,8 +28,12 @@ module.exports = {
           "sass-loader"
         ],
       },
-    ], 
-  },  
+      {
+        test: /\.(png|jpg)/,
+        use: "file-loader"
+      }
+    ],
+  },
   plugins: [
     new HTMLWebpackPlugin({
       template: "./src/index.html"
