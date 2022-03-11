@@ -5,13 +5,45 @@
   color: $primary;
 
   > .heading {
-    margin: 10px 0;
     font-size: 36px;
+    margin: auto auto auto 0;
   }
 
   > .small {
     font-family: skullts2;
     font-size: 24px;
-    margin: auto;
+    margin: auto 0 auto;
+  }
+}
+
+@include media-breakpoint-up(sm) {
+  .heading-container {
+    > .heading {
+      margin: auto;
+    }
+    > .small {
+      margin: auto;
+      text-align: center;
+    }
+  }
+}
+
+@include media-breakpoint-up(md) {
+  .heading-container {
+    > .heading {
+      margin: auto auto auto 0;
+    }
+  }
+}
+
+@include media-breakpoint-up(lg) {
+  .heading-container {
+    > .heading {
+      font-size: 72px;  
+    }
+
+    > .small {
+      display: none;
+    }
   }
 }

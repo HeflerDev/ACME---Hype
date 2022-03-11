@@ -1,20 +1,37 @@
 import React from 'react'
-import { Col, Image} from 'react-bootstrap'
+import { Col, Image } from 'react-bootstrap'
 import PropTypes from 'prop-types'
 import DefaultImage from '../../assets/images/default.png'
+import {
+  EnabledLikeIcon,
+  DisabledLikeIcon
+} from '../../assets/icons'
 
-export const Product = ({ name, imageId, status }) => (
-  <Col xs={5} className="product-container">
+export const Product = ({ name, imageId, status, price }) => (
+  <Col xs={6} sm={4} className="product-container">
     <div className="image">
-      <Image fluid src={`https://picsum.photos/id/${imageId}/150/150`} onError={(e) => e.target.src = DefaultImage}/>
+      {
+        status
+          ? (
+        <div className="icon">
+          <EnabledLikeIcon />
+        </div>)
+          : (
+        <div className="icon">
+          <DisabledLikeIcon />
+        </div>)
+      }
+      <Image fluid src={`https://picsum.photos/id/${imageId}/300/300`} onError={(e) => e.target.src = DefaultImage}/>
     </div>
-    <p className="product">{name}</p>
-    <i className="like">{status}</i>
-  </Col>
+    <div className="product">
+  <p>{name}</p>
+  <p>{price}</p>
+    </div>  </Col>
 )
 
 Product.propTypes = {
   name: PropTypes.string.isRequired,
   imageId: PropTypes.number.isRequired,
-  status: PropTypes.bool.isRequired
+  status: PropTypes.bool.isRequired,
+  price: PropTypes.string.isRequired
 }

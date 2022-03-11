@@ -5,7 +5,22 @@
   background-color: $neutral;
   position: sticky;
   bottom: 0;
+
   > .icon {
     width: 24px;
+  }
+}
+
+@include media-breakpoint-up(sm) {
+  .footer-icons {
+    > .icon {
+      width: 36px;
+    }
+  }
+}
+
+@include media-breakpoint-up(lg) {
+  .footer-icons {
+    display: none;
   }
 }

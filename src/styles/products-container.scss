@@ -1,4 +1,10 @@
 .products-container{
   justify-content: center;
-  background-color: $granite-yellow;
+  font-family: 'Amatic SC', cursive;
+}
+
+@include media-breakpoint-up(sm) {
+  .products-container {
+    justify-content: space-evenly;
+  }
 }

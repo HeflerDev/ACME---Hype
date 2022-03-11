@@ -1,19 +1,108 @@
 .product-container {
-  margin: 20px auto 10px;
+  display: flex;
+  flex-direction: column;
+  margin: 20px auto 5px;
   padding: 0;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  max-width: 140px;
+  font-size: 18px;
+  font-weight: 900;
+  -webkit-text-stroke: 1px $secondary;
+
+  @media (min-width: 444px) {
+    margin: 20px 10px 5px;
+  }
+
   > .image {
     overflow: hidden;
-    border-radius: 10px;
-    margin: 0 auto;
-    width: 133px;
-    height: 133px;
-    z-index: 2;
+    border-radius: 10px 10px 0;
+    width: 140px;
+    height: 140px;
+    position: relative;
+    > .icon {
+      position: absolute;
+      bottom: 0;
+      right:0;
+      padding: 10px;
+      border-radius: 10px 0 0;
+      width: 25%;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      background-color: $sand-yellow;
+    }
   }
 
   > .product {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    padding: 5px 10px;
+    background-color: $sand-yellow;
+    border-radius: 10px 0 10px 10px;
     color: $secondary;
-    margin: 0;
     width: 100%;
-    text-align: center;
+    margin-bottom: auto;
+    > p {
+      margin: 0;
+      padding: 0;
+    }
+    > p:nth-child(2) {
+      color: $dark;
+      padding: 0;
+      -webkit-text-stroke: 0;
+      font-size: 24px;
+      @include media-breakpoint-up(sm) {
+        font-size:32px;
+      }
+      @include media-breakpoint-up(md) {
+        font-size:36px;
+      }
+      @include media-breakpoint-up(lg) {
+        font-size:38px;
+      }
+    }
+  }
+
+}
+
+@include media-breakpoint-up(sm) {
+  .product-container {
+    margin: 10px 20px;
+    max-width: 180px;
+    font-size: 24px;
+    > .image {
+      width: 180px;
+      height: 180px;
+    }
+  }
+}
+
+@include media-breakpoint-up(md) {
+  .product-container {
+    margin: 10px 10px;
+    max-width: 200px;
+    font-size: 28px;
+    > .image {
+      width: 200px;
+      height: 200px;
+    }
+  }
+}
+
+@include media-breakpoint-up(lg) {
+  .product-container {
+    margin: 25px 10px;
+  }
+}
+
+@include media-breakpoint-up(xl) {
+  .product-container {
+    max-width: 250px;
+    > .image {
+      width: 250px;
+      height: 250px;
+    }
   }
 }

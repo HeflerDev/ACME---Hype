@@ -12,6 +12,13 @@ import {
   Products
 } from './'
 
+import AcmeCatalog from '../assets/images/acme-catalog.png'
+
+const catalogStyle = {
+  backgroundImage: `linear-gradient(to bottom,rgba(245, 246, 252, 0.80), rgba(255, 255, 255, 0.40) ), url(${AcmeCatalog})`,
+  backgorundSize: '100%'
+}
+
 const App = () => {
   useEffect(() => {
     const createDBIfEmpty = () => {
@@ -23,9 +30,11 @@ const App = () => {
             const products = {}
             data.map((item) => {
               const rand = Math.floor(Math.random() * 1000)
+              const price = rand.toLocaleString('pt-br', {style: 'currency', currency:'BRL'})
               products[item] = {
                 id: rand,
-                name: item
+                name: item,
+                price
               }
             })
             localStorage.setItem('products', JSON.stringify(products))
@@ -39,9 +48,15 @@ const App = () => {
 
   return (
       <Router>
-         <Header />
-         <Products />
-         <MobileFooter />
+        {
+          localStorage.getItem('products') && (
+            <section className="page-container" style={catalogStyle}>
+             <Header />
+             <Products />
+             <MobileFooter />
+            </section>
+          )
+        }
       </Router>
   )
 }

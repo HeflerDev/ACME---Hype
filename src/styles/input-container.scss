@@ -1,0 +1,41 @@
+.input-container {
+  display:flex;
+  flex-direction: column;
+  width: 85%;
+  margin: auto auto auto 0;
+  > .heading {
+    display: none;
+  }
+
+  > .field {
+    outline: none;
+    border: none;
+    background-color: $secondary;
+    color: $light;
+    border-radius: 10px;
+    padding: 5px 20px;
+    margin: 10px 0;
+    width: 100%;
+    font-size: 14px;
+    &::placeholder {
+      color: $light;
+    }
+  }
+}
+
+@include media-breakpoint-up(lg) {
+  .input-container {
+    > .heading {
+      display: block;
+      font-family: skullts2;
+      color: $primary;
+      font-size: 36px;
+      margin: 0;
+    }
+
+    > .field {
+      margin: 0 0 10px;
+      height: 40px;
+    }
+  }
+}

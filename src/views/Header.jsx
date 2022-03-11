@@ -5,17 +5,19 @@ import {
 } from 'react-bootstrap'
 
 import {
-  SearchBar
+  SearchBar,
+  Icons
 } from './components'
 
 export const Header = () => {
   return (
-      <Row>
-         <Col xs={12} className="heading-container">
-            <h1 className="heading">ACME</h1>
+      <Row className="header-container">
+         <Col xs={12} sm={5} md={6} lg={3} className="heading-container">
+            <h1 className="heading">acme</h1>
             <h2 className="heading small">a company that makes everything</h2>
          </Col>
          <SearchBar/>
+         <Icons />
         <nav className="navbar-container">
           <div className="item">popular</div>
           <div className="item separator">|</div>

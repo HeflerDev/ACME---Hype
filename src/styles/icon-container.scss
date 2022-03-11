@@ -1,0 +1,15 @@
+.icon-container {
+  display: none;
+}
+
+@include media-breakpoint-up(lg) {
+  .icon-container {
+    display: flex;
+    justify-content: space-around;
+    > .icon {
+      display: flex;
+      justify-content: center;
+      margin: auto 0 10px;
+    }
+  }
+}
