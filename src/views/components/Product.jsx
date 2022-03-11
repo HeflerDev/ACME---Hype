@@ -10,7 +10,7 @@ import { Link } from 'react-router-dom'
 
 export const Product = ({ name, imageId, status, price }) => (
   <Col xs={6} sm={4} md={3} className="p-0">
-    <Link to={`/product/${imageId}`}className="product-container">
+    <Link to={`/product/${name}`}className="product-container">
     <div className="image">
       {
         status

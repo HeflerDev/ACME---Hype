@@ -13,6 +13,9 @@ import {
   ProductInfo
 } from './'
 
+import { useSelector, useDispatch } from 'react-redux'
+import { stash } from '../redux/slices/dbSlice'
+
 import AcmeCatalog from '../assets/images/acme-catalog.png'
 
 const catalogStyle = {
@@ -21,41 +24,47 @@ const catalogStyle = {
 }
 
 const App = () => {
+  const db = useSelector(state => state.db.data)
+  const dispatch = useDispatch()
+
   useEffect(() => {
     const createDBIfEmpty = () => {
-      const data = localStorage.getItem('products')
-      if (!data) {
-        fetch('/gen')
-          .then(res => res.json())
-          .then(data => {
-            const products = {}
-            data.map((item) => {
-              const rand = Math.floor(Math.random() * 1000)
-              const price = rand.toLocaleString('pt-br', { style: 'currency', currency: 'BRL' })
-              products[item] = {
-                id: rand,
-                name: item,
-                price
-              }
-            })
-            localStorage.setItem('products', JSON.stringify(products))
-            return products
+      fetch('/gen')
+        .then(res => res.json())
+        .then(data => {
+          const products = {}
+          data.map((item) => {
+            const rand = Math.floor(Math.random() * 1000)
+            const price = rand.toLocaleString('pt-br', { style: 'currency', currency: 'BRL' })
+            products[item] = {
+              id: rand,
+              name: item,
+              price
+            }
           })
-      }
+          localStorage.setItem('products', JSON.stringify(products))
+          dispatch(products)
+        })
     }
 
-    createDBIfEmpty()
+    const data = localStorage.getItem('products')
+
+    if (data) {
+      dispatch(stash(JSON.parse(localStorage.getItem('products'))))
+    } else {
+      createDBIfEmpty()
+    }
   }, [])
 
   return (
       <Router>
         {
-          localStorage.getItem('products') && (
+          db && (
             <section className="page-container" style={catalogStyle}>
              <Header />
               <Routes>
                 <Route path="/" element={<Products />} />
-                <Route path="/product/:id" element={<ProductInfo />} />
+                <Route path="/product/:name" element={<ProductInfo />} />
               </Routes>
              <MobileFooter />
              <Footer />

@@ -37,7 +37,7 @@ function generate (req, res) {
       const length = db[prop].length
       name += db[prop][Math.floor(Math.random() * length)] + ' '
     }
-    output.push(name)
+    output.push(name.trim())
   })
   res.send(JSON.stringify(output))
 }

@@ -1,13 +1,10 @@
-import React, { useState, useEffect } from 'react'
-import { Col, Row, Container } from 'react-bootstrap'
+import React from 'react'
+import { Row, Container } from 'react-bootstrap'
 import { Product } from './components'
+import { useSelector } from 'react-redux'
 
 export const Products = () => {
-  const [data, setData] = useState({})
-
-  useEffect(() => {
-    setData(JSON.parse(localStorage.getItem('products')))
-  }, [])
+  const data = useSelector(state => state.db.data)
 
   return (
 
