@@ -1,15 +1,14 @@
 .product-container {
   display: flex;
   flex-direction: column;
-  margin: 20px auto 5px;
+  margin: auto;
   padding: 0;
-  flex-wrap: wrap;
   justify-content: space-between;
-  max-width: 140px;
   font-size: 18px;
+  width: 90%;
+  height: 95%;
   font-weight: 900;
   -webkit-text-stroke: 1px $secondary;
-  min-height: 100%;
   position: relative;
   &::before {
     content: "";
@@ -29,8 +28,6 @@
   > .image {
     overflow: hidden;
     border-radius: 10px 10px 0;
-    width: 140px;
-    height: 140px;
     position: relative;
     > .icon {
       position: absolute;
@@ -55,7 +52,7 @@
     border-radius: 10px 0 10px 10px;
     color: $secondary;
     width: 100%;
-    margin-bottom: auto;
+    margin: auto 0;
     z-index: 3;
     > p {
       margin: 0;
@@ -80,33 +77,10 @@
 
 }
 
-@include media-breakpoint-up(sm) {
-  .product-container {
-    margin: 10px 20px;
-    max-width: 180px;
-    font-size: 24px;
-    > .image {
-      width: 180px;
-      height: 180px;
-    }
-  }
-}
 
 @include media-breakpoint-up(md) {
   .product-container {
-    margin: 10px 10px;
-    max-width: 200px;
     font-size: 28px;
-    > .image {
-      width: 200px;
-      height: 200px;
-    }
-  }
-}
-
-@include media-breakpoint-up(lg) {
-  .product-container {
-    margin: 25px 10px;
   }
 }
 

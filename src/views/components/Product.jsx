@@ -6,9 +6,11 @@ import {
   EnabledLikeIcon,
   DisabledLikeIcon
 } from '../../assets/icons'
+import { Link } from 'react-router-dom'
 
 export const Product = ({ name, imageId, status, price }) => (
-  <Col xs={6} sm={4} className="product-container">
+  <Col xs={6} sm={4} md={3} className="p-0">
+    <Link to={`/product/${imageId}`}className="product-container">
     <div className="image">
       {
         status
@@ -26,7 +28,7 @@ export const Product = ({ name, imageId, status, price }) => (
     <div className="product">
   <p>{name}</p>
   <p>{price}</p>
-    </div>  </Col>
+  </div> </Link>  </Col>
 )
 
 Product.propTypes = {

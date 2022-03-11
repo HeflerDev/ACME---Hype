@@ -1,16 +1,16 @@
 import React, { useEffect } from 'react'
 import {
   BrowserRouter as Router,
-  Switch,
-  Route,
-  Link
+  Routes,
+  Route
 } from 'react-router-dom'
 
 import {
   Header,
   MobileFooter,
   Products,
-  Footer
+  Footer,
+  ProductInfo
 } from './'
 
 import AcmeCatalog from '../assets/images/acme-catalog.png'
@@ -31,7 +31,7 @@ const App = () => {
             const products = {}
             data.map((item) => {
               const rand = Math.floor(Math.random() * 1000)
-              const price = rand.toLocaleString('pt-br', {style: 'currency', currency:'BRL'})
+              const price = rand.toLocaleString('pt-br', { style: 'currency', currency: 'BRL' })
               products[item] = {
                 id: rand,
                 name: item,
@@ -53,7 +53,10 @@ const App = () => {
           localStorage.getItem('products') && (
             <section className="page-container" style={catalogStyle}>
              <Header />
-             <Products />
+              <Routes>
+                <Route path="/" element={<Products />} />
+                <Route path="/product/:id" element={<ProductInfo />} />
+              </Routes>
              <MobileFooter />
              <Footer />
             </section>
