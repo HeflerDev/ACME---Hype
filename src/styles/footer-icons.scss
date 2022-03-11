@@ -5,7 +5,7 @@
   background-color: $neutral;
   position: sticky;
   bottom: 0;
-
+  z-index: 1000;
   > .icon {
     width: 24px;
   }

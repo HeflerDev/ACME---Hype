@@ -9,13 +9,14 @@ import {
 import {
   Header,
   MobileFooter,
-  Products
+  Products,
+  Footer
 } from './'
 
 import AcmeCatalog from '../assets/images/acme-catalog.png'
 
 const catalogStyle = {
-  backgroundImage: `linear-gradient(to bottom,rgba(245, 246, 252, 0.80), rgba(255, 255, 255, 0.40) ), url(${AcmeCatalog})`,
+  backgroundImage: `linear-gradient(to bottom,rgba(250, 250, 150, 0.5), rgba(250, 250, 150, 0.5)), url(${AcmeCatalog})`,
   backgorundSize: '100%'
 }
 
@@ -54,6 +55,7 @@ const App = () => {
              <Header />
              <Products />
              <MobileFooter />
+             <Footer />
             </section>
           )
         }

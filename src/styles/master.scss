@@ -16,6 +16,10 @@ body {
   background-color: $sand-yellow !important;
 }
 
+ul {
+  list-style: none;
+}
+
 @import "~bootstrap/scss/bootstrap";
 @import "./footer-icons.scss";
 @import "./navbar-container.scss";

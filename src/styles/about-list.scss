@@ -1,0 +1,12 @@
+.about-list {
+  margin: 0 auto auto;
+  > .title {
+    font-family: skullts2;
+    font-size: 48px;
+  }
+  > .item {
+    font-family: Arial;
+    font-weight: 400;
+    font-size: 24px;
+  }
+}
