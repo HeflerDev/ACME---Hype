@@ -24,6 +24,9 @@ export const ProductInfo = () => {
     <Row className="product-info">
       <Col xs={12} className="image">
         <Image fluid src={`https://picsum.photos/id/${data[name].id}/300/300`} onError={(e) => e.target.src = DefaultImage}/>
+        <div className="icon">
+          <DisabledLikeIcon />
+        </div>
       </Col>
       <Col xs={12} className="title">
         <h1>{data[name].name}</h1>
