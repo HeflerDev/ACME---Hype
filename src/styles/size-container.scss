@@ -1,0 +1,22 @@
+.size-container {
+  width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+
+  > .title {
+    width: 100%;
+    font-size: 1.3rem;
+  }
+
+  > .size {
+    width: 32px;
+    height: 32px;
+    margin: 10px 5px 10px 0;
+    border: solid $dark 1px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    text-align: center;
+    background-color: $light;
+  }
+}

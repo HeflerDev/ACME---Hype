@@ -1,0 +1,17 @@
+.name-block {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  margin: auto 5px;
+  width: 100px;
+
+  > .name {
+
+  }
+
+  > .rating {
+    display:flex;
+    > svg { width: 10px; }
+  }
+
+}

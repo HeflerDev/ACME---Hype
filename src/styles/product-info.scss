@@ -1,0 +1,21 @@
+.product-info {
+  display: flex;
+  flex-direction: column;
+  font-family: 'Amatic SC', cursive;
+  font-weight: bold;
+  > .image {
+    border-radius: 10px;
+    overflow: hidden;
+    padding: 0;
+    margin: 10px auto;
+  }
+
+  > .title {
+    font-size: 32px;
+    background-color: $sand-yellow;
+    color: $secondary;
+    padding: 10px 5px;
+    border-radius: 5px;
+    > h1 { margin: 0;}
+  }
+}

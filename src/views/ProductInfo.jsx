@@ -2,6 +2,7 @@ import React, {useState} from 'react'
 import { Container, Col, Row, Image } from 'react-bootstrap'
 import { useSelector } from 'react-redux'
 import { useParams } from 'react-router-dom'
+import { Link } from 'react-router-dom'
 
 import DefaultImage from '../assets/images/default.png'
 import {
@@ -44,7 +45,7 @@ export const ProductInfo = () => {
         </div>
 
         <div className="color-container">
-          <div className="title">Cor</div>
+          <div className="title">Cor:</div>
           <div className="shade c"></div>
           <div className="shade m"></div>
           <div className="shade y"></div>
@@ -53,7 +54,7 @@ export const ProductInfo = () => {
         </div>
 
         <div className="size-container">
-          <div className="title"></div>
+          <div className="title">Tamanho</div>
           <div className="size">1</div>
           <div className="size">2</div>
           <div className="size">3</div>
@@ -77,16 +78,16 @@ export const ProductInfo = () => {
         <div className="bag-button">
           <div className="text">COLOCAR NA SACOLA</div>
           <div className="icon">
-            <BagIcon />
+            <BagIcon color="red" />
           </div>
         </div>
 
         <div className="quantity-container">
-          <div className="text">IR PARA A SACOLA</div>
+          <Link to="/bag" className="text">IR PARA A SACOLA</Link>
           <div className="quantity">
-            <span>-</span>
-            <span>1</span>
-            <span>+</span>
+            <div>-</div>
+            <div>1</div>
+            <div>+</div>
           </div>
         </div>
       </Col>
@@ -106,6 +107,7 @@ export const ProductInfo = () => {
             </div>
           </div>
           <div className="comment">Bip-Bip &gt;</div>
+          </div>
 
         <div className="comment-container">
           <div className="avatar"></div>
@@ -123,7 +125,6 @@ export const ProductInfo = () => {
             Comprarei novamente. Recomendo!
           </div>
         </div>
-      </div>
     </Row>
   </Container>
   )

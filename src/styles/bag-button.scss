@@ -1,0 +1,17 @@
+.bag-button {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  padding: 5px;
+  border: solid $secondary 3px;
+  border-radius: 5px;
+  background-color: $lighter-gray;
+  margin: 10px auto;
+  > .text {
+    font-size: 40px;
+  }
+
+  > .icon {
+    width: 36px;
+  }
+}
