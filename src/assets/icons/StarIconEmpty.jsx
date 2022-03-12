@@ -1,7 +1,7 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 
-export const StarIcon = ({
+export const StarIconEmpty = ({
   size = '100%',
   color = 'black'
 }) => (
@@ -10,7 +10,7 @@ export const StarIcon = ({
   </svg>
 )
 
-StarIcon.propTypes = {
+StarIconEmpty.propTypes = {
   size: PropTypes.string,
   color: PropTypes.string
 }
