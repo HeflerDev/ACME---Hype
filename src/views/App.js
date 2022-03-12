@@ -1,8 +1,9 @@
 import React, { useEffect } from 'react'
 import {
-  BrowserRouter as Router,
+  HashRouter,
   Routes,
-  Route
+  Route,
+  Navigate
 } from 'react-router-dom'
 
 import {
@@ -57,7 +58,7 @@ const App = () => {
   }, [])
 
   return (
-      <Router>
+      <HashRouter>
         {
           db && (
             <section className="page-container" style={catalogStyle}>
@@ -65,13 +66,17 @@ const App = () => {
               <Routes>
                 <Route path="/" element={<Products />} />
                 <Route path="/product/:name" element={<ProductInfo />} />
+                <Route
+                  path="*"
+                  element={<Navigate replace to="/" />}
+                />
               </Routes>
              <MobileFooter />
              <Footer />
             </section>
           )
         }
-      </Router>
+      </HashRouter>
   )
 }
 
