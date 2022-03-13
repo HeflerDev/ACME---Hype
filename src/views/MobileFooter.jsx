@@ -12,7 +12,7 @@ export const MobileFooter = () => {
           <ListIcon />
       </div>
       <div className="favorites icon">
-        <EnabledLikeIcon />
+        <EnabledLikeIcon color="black"/>
       </div>
       <div className="bag icon">
         <BagIcon />

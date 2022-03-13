@@ -9,6 +9,7 @@
   }
 
   > .size {
+    cursor: pointer;
     width: 32px;
     height: 32px;
     margin: 10px 5px 10px 0;
@@ -18,5 +19,10 @@
     justify-content: center;
     text-align: center;
     background-color: $light;
+  }
+
+  > .activesize {
+    border: solid red 3px;
+    transition: all 0.1s;
   }
 }

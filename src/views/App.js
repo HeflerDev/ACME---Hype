@@ -40,7 +40,11 @@ const App = () => {
             products[item] = {
               id: rand,
               name: item,
-              price
+              price,
+              like: false,
+              color: "default",
+              size: null,
+              quantity: 1
             }
           })
           localStorage.setItem('products', JSON.stringify(products))

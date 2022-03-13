@@ -1,8 +1,9 @@
-import React, {useState} from 'react'
+import React, { useState, useEffect } from 'react'
 import { Container, Col, Row, Image } from 'react-bootstrap'
 import { useSelector } from 'react-redux'
-import { useParams } from 'react-router-dom'
-import { Link } from 'react-router-dom'
+import { useParams, Link } from 'react-router-dom'
+import { useDispatch } from 'react-redux'
+import { grab } from '../redux/slices/dbSlice'
 
 import DefaultImage from '../assets/images/default.png'
 import {
@@ -17,15 +18,83 @@ import {
 
 export const ProductInfo = () => {
   const data = useSelector(state => state.db.data)
+  const dispatch = useDispatch()
   const { name } = useParams()
+  const [product, setProduct] = useState({
+    name: data[name].name,
+    id: data[name].id,
+    price: data[name].price,
+    like: data[name].like,
+    color: data[name].color,
+    size: data[name].size,
+    quantity: data[name].quantity
+  })
+
+  useEffect(() => {
+    document.querySelectorAll('.shade').forEach(elem => {
+      elem.addEventListener('click', ({ target }) => {
+        document.querySelector('.activecolor').classList.remove('activecolor')
+        elem.classList.add('activecolor')
+        setProduct({ ...product, color: target.id })
+      })
+    })
+
+    document.querySelectorAll('.size').forEach(elem => {
+      elem.addEventListener('click', ({ target }) => {
+        const sizeElem = document.querySelector('.activesize')
+        if (sizeElem) {
+          sizeElem.classList.remove('activesize')
+          elem.classList.add('activesize')
+        } else {
+          elem.classList.add('activesize')
+        }
+        setProduct({ ...product, size: target.id })
+      })
+    })
+  }, [])
+
+  const handleCounter = (operation) => {
+    if (operation === '+') {
+      setProduct({ ...product, quantity: product.quantity + 1 })
+    }
+
+    if (operation === '-' && product.quantity !== 1) {
+      setProduct({ ...product, quantity: product.quantity - 1 })
+    }
+  }
+
+  const handleBuy = () => {
+    const submission = {}
+    submission[product.name] = {
+      name: product.name,
+      id: product.id,
+      price: product.price,
+      like: product.like,
+      color: product.color,
+      size: product.size,
+      quantity: product.quantity
+    }
+
+    dispatch(grab(submission))
+  }
+
+  console.log(product)
 
   return (
     <Container>
     <Row className="product-info">
       <Col xs={12} className="image">
         <Image fluid src={`https://picsum.photos/id/${data[name].id}/300/300`} onError={(e) => e.target.src = DefaultImage}/>
-        <div className="icon">
-          <DisabledLikeIcon />
+        <div className="icon" onClick={() => product.like ? setProduct({ ...product, like: false }) : setProduct({ ...product, like: true })}>
+          {
+            product.like
+              ? (
+              <EnabledLikeIcon />
+                )
+              : (
+              <DisabledLikeIcon />
+                )
+          }
         </div>
       </Col>
       <Col xs={12} className="title">
@@ -49,20 +118,20 @@ export const ProductInfo = () => {
 
         <div className="color-container">
           <div className="title">Cor:</div>
-          <div className="shade c"></div>
-          <div className="shade m"></div>
-          <div className="shade y"></div>
-          <div className="shade k"></div>
-          <div className="shade null"></div>
+          <div id="c" className="shade c"></div>
+          <div id="m" className="shade m"></div>
+          <div id="y" className="shade y"></div>
+          <div id="k" className="shade k"></div>
+          <div id="default" className="shade null activecolor"></div>
         </div>
 
         <div className="size-container">
           <div className="title">Tamanho</div>
-          <div className="size">1</div>
-          <div className="size">2</div>
-          <div className="size">3</div>
-          <div className="size">4</div>
-          <div className="size">5</div>
+          <div id="one" className="size">1</div>
+          <div id="two" className="size">2</div>
+          <div id="three" className="size">3</div>
+          <div id="four" className="size">4</div>
+          <div id="five" className="size">5</div>
         </div>
 
         <div className="price-container">
@@ -78,7 +147,7 @@ export const ProductInfo = () => {
           </div>
         </div>
 
-        <div className="bag-button">
+        <div className="bag-button" onClick={handleBuy}>
           <div className="text">COLOCAR NA SACOLA</div>
           <div className="icon">
             <BagIcon color="red" />
@@ -88,9 +157,12 @@ export const ProductInfo = () => {
         <div className="quantity-container">
           <Link to="/bag" className="text">IR PARA A SACOLA</Link>
           <div className="quantity">
-            <div>-</div>
-            <div>1</div>
-            <div>+</div>
+            <div
+              onClick={() => handleCounter('-')}
+              className={product.quantity === 1 ? "disable" : ''}
+              >-</div>
+            <div id="quantity-number">{product.quantity && product.quantity}</div>
+            <div onClick={() => handleCounter('+')}>+</div>
           </div>
         </div>
       </Col>

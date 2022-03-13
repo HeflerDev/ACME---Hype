@@ -20,5 +20,7 @@
     border-radius: 5px;
     font-size: 24px;
     -webkit-text-stroke: 1px $dark;
+    > .disable { opacity: 0.5; }
   }
+
 }

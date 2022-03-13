@@ -8,6 +8,7 @@
   }
 
   > .shade {
+    cursor: pointer;
     width: 32px;
     height: 32px;
     display: flex;
@@ -46,5 +47,10 @@
       right:-12px;
       transform: rotate(-45deg);
     }
+  }
+
+  > .activecolor {
+    border: solid $secondary 3px;
+    transition: 0.2s;
   }
 }
