@@ -1,9 +1,21 @@
 import React, { useState, useEffect } from 'react';
-import { Container, Col, Row, Image } from 'react-bootstrap'
+import { Container, Col, Row } from 'react-bootstrap'
 import { useSelector, useDispatch } from 'react-redux'
 import { BagIcon } from '../assets/icons'
 
+import { Checkout } from "./components"
+
 export const CheckoutPage = () => {
+  const userBag = useSelector(state => state.db.userBag)
+  const [bag, setBag] = useState([])
+
+  useEffect(() => {
+      for (const property in userBag.bag) {
+        setBag([...bag, {[property]: userBag.bag[property]}])
+      }
+  }, [])
+
+
   return (
     <Container>
       <Row className="bag-page">
@@ -19,6 +31,7 @@ export const CheckoutPage = () => {
           <div>Preço</div>
           <div>Subtotal</div>
         </Col>
+        < Checkout  name="Hefler" color="c" size="one" quantity="one" price="R$ 200,00" id={200}/>
         <Col className="finish-buy" xs={12}>
           <div className="left-container">
             <input type="text" className="delivery"/>
