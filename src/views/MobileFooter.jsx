@@ -1,6 +1,6 @@
 import React from 'react'
 import { Col } from 'react-bootstrap'
-import { UserIcon, BagIcon, DisabledLikeIcon, EnabledLikeIcon, FilterIcon, HouseIcon, ListIcon } from '../assets/icons'
+import { UserIcon, BagIcon, EnabledLikeIcon, HouseIcon, ListIcon } from '../assets/icons'
 
 export const MobileFooter = () => {
   return (
