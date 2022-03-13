@@ -9,7 +9,7 @@ export const CheckoutPage = () => {
       <Row className="bag-page">
         <Col className="header" xs={12}>
           <div className="icon">
-            <BagIcon />
+            <BagIcon color="red" />
           </div>
           <h1>Sacola de Compras</h1>
         </Col>
@@ -19,22 +19,22 @@ export const CheckoutPage = () => {
           <div>Preço</div>
           <div>Subtotal</div>
         </Col>
-        <Col className="finish-buy">
+        <Col className="finish-buy" xs={12}>
           <div className="left-container">
             <input type="text" className="delivery"/>
-            <button className="deliverybtn"></button>
+            <button className="deliverybtn _btn-primary">Calcular Frete</button>
             <div className="text"></div>
             <input type="text" className="send"/>
-            <button className="sendbtn"></button>
+            <button className="sendbtn _btn-secondary">Enviar</button>
           </div>
           <div className="right-container">
-            <div className="subtotal"></div>
-            <div className="price"></div>
-            <div className="delivery"></div>
-            <div className="price"></div>
-            <div className="total"></div>
-            <div className="price"></div>
-            <div className="buybtn"></div>
+            <div className="subtotal">Subtotal</div>
+            <div className="price">R$ 00,00</div>
+            <div className="delivery">Frete</div>
+            <div className="price">R$ 00,00</div>
+            <div className="total">Total</div>
+            <div className="price total">R$ 00,00</div>
+            <div className="buybtn _btn-primary">Finalizar compra</div>
           </div>
         </Col>
       </Row>

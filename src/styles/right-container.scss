@@ -1,0 +1,30 @@
+.right-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  width: 100%;
+  -webkit-text-stroke: 1px $dark;
+  font-size: 24px;
+
+  > .subtotal,
+  > .price,
+  > .delivery,
+  > .total {
+    width: 45%;
+  }
+
+  > .buybtn {
+    width: 100%;
+    margin: 10px auto;
+  }
+
+  > .price {
+    text-decoration: underline;
+  }
+
+  > .total {
+    font-size: 28px;
+    color: $secondary;
+    -webkit-text-stroke: 1px $secondary;
+  }
+}
