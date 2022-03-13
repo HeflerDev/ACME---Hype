@@ -1,0 +1,24 @@
+.checkout-product {
+  display: flex;
+  flex-wrap: wrap;
+  width: 100%;
+  background-color: #F53D1540;
+  padding: 10px;
+  margin: 10px auto;
+  > .image {
+    width: 40%;
+    border-radius: 5px;
+    overflow: hidden;
+  }
+
+  > .quantitylabel,
+  > .quantity,
+  > .pricelabel,
+  > .price,
+  > .totallabel,
+  > .total {
+    width: 30%;
+    margin: auto;
+  }
+
+}

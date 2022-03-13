@@ -16,6 +16,14 @@
     margin: 10px 5px 10px 0;
   }
 
+  > .smshade {
+    width: 16px;
+    height: 16px;
+    display: flex;
+    justify-content: center;
+    margin: auto 10px;
+  }
+
   > .c {
     background-color: cyan;
   }

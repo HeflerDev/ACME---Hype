@@ -31,7 +31,7 @@ export const CheckoutPage = () => {
           <div>Preço</div>
           <div>Subtotal</div>
         </Col>
-        < Checkout  name="Hefler" color="c" size="one" quantity="one" price="R$ 200,00" id={200}/>
+        < Checkout name="Hefler" color="c" size="2" quantity="1" price="R$ 200,00" id={200}/>
         <Col className="finish-buy" xs={12}>
           <div className="left-container">
             <input type="text" className="delivery"/>

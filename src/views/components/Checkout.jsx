@@ -2,6 +2,8 @@ import React from 'react';
 import { Col, Image } from 'react-bootstrap';
 import PropTypes from 'prop-types';
 
+import { Shade, Size } from "./"
+
 export const Checkout = ({
   name,
   color,
@@ -16,21 +18,23 @@ export const Checkout = ({
       </div>
       <div className="checkout-info">
         <div className="name">
-          <div className="label">Name:</div>
           <div className="name">{name}</div>
         </div>
         <div className="color">
-          <div className="label"></div>
-          <div className="shade"></div>
+          <div className="label">Cor:</div>
+          <Shade shade={color} />
         </div>
         <div className="size">
-          <div className="label"></div>
-          <div className="size"></div>
+          <div className="label">Tamanho:</div>
+          <Size size={size} />
         </div>
       </div>
-      <div className="quantity"></div>
-      <div className="price"></div>
-      <div className="total"></div>
+      <div className="pricelabel">Price:</div>
+      <div className="quantitylabel">Quantity</div>
+      <div className="totallabel">Total</div>
+      <div className="price">R$ 200,00</div>
+      <div className="quantity">2</div>
+      <div className="total">R$ 400,00</div>
       <div className="closebtn"></div>
     </Col>
 )
