@@ -155,7 +155,7 @@ export const ProductInfo = () => {
         </div>
 
         <div className="quantity-container">
-          <Link to="/bag" className="text">IR PARA A SACOLA</Link>
+          <Link to="/checkout" className="text">IR PARA A SACOLA</Link>
           <div className="quantity">
             <div
               onClick={() => handleCounter('-')}

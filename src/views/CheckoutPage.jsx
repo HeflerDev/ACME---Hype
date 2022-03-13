@@ -3,7 +3,7 @@ import { Container, Col, Row, Image } from 'react-bootstrap'
 import { useSelector, useDispatch } from 'react-redux'
 import { BagIcon } from '../assets/icons'
 
-export const BagPage = () => {
+export const CheckoutPage = () => {
   return (
     <Container>
       <Row className="bag-page">

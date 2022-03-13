@@ -11,9 +11,9 @@ import {
   MobileFooter,
   Products,
   Footer,
-  ProductInfo
+  ProductInfo,
+  CheckoutPage
 } from './'
-
 import { useSelector, useDispatch } from 'react-redux'
 import { stash } from '../redux/slices/dbSlice'
 
@@ -70,6 +70,7 @@ const App = () => {
               <Routes>
                 <Route path="/" element={<Products />} />
                 <Route path="/product/:name" element={<ProductInfo />} />
+                <Route path="/checkout" element={<CheckoutPage />} />
                 <Route
                   path="*"
                   element={<Navigate replace to="/" />}
