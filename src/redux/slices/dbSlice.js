@@ -4,21 +4,26 @@ export const dbSlice = createSlice({
   name: 'db',
   initialState: {
     data: null,
-    userBag: [],
-    userBought: []
+    userBag: {
+      bag: {}
+    },
+    userInventory: {}
   },
   reducers: {
     stash: (state, action) => {
       state.data = action.payload
     },
     grab: (state, action) => {
-      state.userBag.push(action.payload)
+      state.userBag = { ...state.userBag, bag: action.payload }
+    },
+    giveBack: (state, action) => {
+      state.userBag.bag = { ...state.userBag.bag, [action.payload]: null }
     },
     buy: (state, action) => {
-      state.userBought.push(action.payload)
+      state.userInventory = { ...state.userInventory, inventory: action.payload }
     }
   }
 })
 
-export const { stash, grab, buy } = dbSlice.actions
+export const { stash, grab, buy, giveBack } = dbSlice.actions
 export default dbSlice.reducer

@@ -3,7 +3,7 @@ import { Container, Col, Row, Image } from 'react-bootstrap'
 import { useSelector } from 'react-redux'
 import { useParams, Link } from 'react-router-dom'
 import { useDispatch } from 'react-redux'
-import { grab } from '../redux/slices/dbSlice'
+import { grab, giveBack } from '../redux/slices/dbSlice'
 
 import DefaultImage from '../assets/images/default.png'
 import {
@@ -18,6 +18,7 @@ import {
 
 export const ProductInfo = () => {
   const data = useSelector(state => state.db.data)
+  const userBag = useSelector(state => state.db.userBag)
   const dispatch = useDispatch()
   const { name } = useParams()
   const [product, setProduct] = useState({
@@ -53,6 +54,18 @@ export const ProductInfo = () => {
     })
   }, [])
 
+  const validateSubmission = () => {
+    if (!product.size) return false
+    return {}
+  }
+
+  const validateBag = () => {
+    if (userBag.bag[data[name].name]) {
+      return true
+    }
+    return false
+  }
+
   const handleCounter = (operation) => {
     if (operation === '+') {
       setProduct({ ...product, quantity: product.quantity + 1 })
@@ -64,21 +77,36 @@ export const ProductInfo = () => {
   }
 
   const handleBuy = () => {
-    const submission = {}
-    submission[product.name] = {
-      name: product.name,
-      id: product.id,
-      price: product.price,
-      like: product.like,
-      color: product.color,
-      size: product.size,
-      quantity: product.quantity
+    const submission = validateSubmission()
+    if (submission) {
+      submission[product.name] = {
+        name: product.name,
+        id: product.id,
+        price: product.price,
+        like: product.like,
+        color: product.color,
+        size: product.size,
+        quantity: product.quantity
+      }
+      dispatch(grab(submission))
     }
-
-    dispatch(grab(submission))
   }
 
-  console.log(product)
+  const handleLike = () => {
+    localStorage.setItem('likes', JSON.stringify(
+        {
+          [product.name]: {
+            name: product.name,
+            like: product.like
+          }
+        }
+      ))
+  }
+
+
+  const handleRemove = () => {
+    dispatch(giveBack(data[name].name))
+  }
 
   return (
     <Container>
@@ -147,8 +175,8 @@ export const ProductInfo = () => {
           </div>
         </div>
 
-        <div className="bag-button" onClick={handleBuy}>
-          <div className="text">COLOCAR NA SACOLA</div>
+        <div className="bag-button" onClick={() => validateBag() ? handleRemove() : handleBuy()}>
+          <div className="text">{validateBag() ? "Retirar da Sacola" : "Colocar na Sacola"}</div>
           <div className="icon">
             <BagIcon color="red" />
           </div>
