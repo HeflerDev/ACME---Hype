@@ -15,7 +15,8 @@ import {
   Products,
   Footer,
   ProductInfo,
-  CheckoutPage
+  CheckoutPage,
+  LikedProducts
 } from './'
 import { useSelector, useDispatch } from 'react-redux'
 import { stash } from '../redux/slices/dbSlice'
@@ -84,6 +85,7 @@ const App = () => {
                 <Route path="/" element={<Products />} />
                 <Route path="/product/:name" element={<ProductInfo />} />
                 <Route path="/checkout" element={<CheckoutPage />} />
+                <Route path="/likes" element={<LikedProducts />} />
                 <Route
                   path="*"
                   element={<Navigate replace to="/" />}
