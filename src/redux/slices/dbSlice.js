@@ -1,10 +1,10 @@
-import { createSlice } from "@reduxjs/toolkit"
+import { createSlice } from '@reduxjs/toolkit'
 
 export const dbSlice = createSlice({
   name: 'db',
   initialState: {
     data: null,
-    userBag: {},
+    userBag: {}
   },
   reducers: {
     stash: (state, action) => {
@@ -17,7 +17,7 @@ export const dbSlice = createSlice({
       delete state.userBag[action.payload]
     },
     clear: (state) => {
-        state.userBag = {}
+      state.userBag = {}
     }
   }
 })
