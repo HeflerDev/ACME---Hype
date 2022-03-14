@@ -42,6 +42,11 @@ function generate (req, res) {
   res.send(JSON.stringify(output))
 }
 
+function buy (req, res) {
+
+}
+
 app.get('/products', index)
 app.get('/gen', generate)
+// app.post('/products', buy)
 app.listen(portServer, () => console.log(`ACME server running on port ${portServer}!`))

@@ -7,7 +7,13 @@ export const Products = () => {
   const data = useSelector(state => state.db.data)
 
   const checkLike = (key) => {
-    return JSON.parse(localStorage.getItem('likes'))[key]?.like
+    if (localStorage.getItem("likes")) {
+    const like = JSON.parse(localStorage.getItem('likes'))[key]?.like
+    if (like) {
+      return true
+    }
+    }
+    return false
   }
 
   return (

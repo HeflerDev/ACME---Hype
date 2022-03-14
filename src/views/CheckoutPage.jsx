@@ -7,7 +7,7 @@ import { Checkout } from './components'
 
 export const CheckoutPage = () => {
   const userBag = useSelector(state => state.db.userBag)
-  const [bag, setBag] = useState([{ ...userBag }])
+
 
   const numerify = (str) => {
     switch (str) {
@@ -19,8 +19,6 @@ export const CheckoutPage = () => {
     }
   }
 
-  console.log(bag)
-
   return (
     <Container>
       <Row className="bag-page">
@@ -31,19 +29,19 @@ export const CheckoutPage = () => {
           <h1>Sacola de Compras</h1>
         </Col>
         {
-          bag
+          userBag
             ? (
             <>
             {
-              bag.map(item => (
+              Object.keys(userBag).map(key => (
                 <Checkout
-                  key={item.name}
-                  name={item.name}
-                  size={numerify(item.size)}
-                  color={item.color}
-                  quantity={item.quantity}
-                  price={item.price}
-                  id={item.id}
+                  key={userBag[key].name}
+                  name={userBag[key].name}
+                  size={numerify(userBag[key].size)}
+                  color={userBag[key].color}
+                  quantity={userBag[key].quantity}
+                  price={userBag[key].price}
+                  id={userBag[key].id}
                 />
               ))
             }

@@ -22,7 +22,18 @@ export const ProductInfo = () => {
   const { name } = useParams()
   const [product, setProduct] = useState({ ...data[name] })
 
-  console.log(product.like)
+  console.log(product)
+
+  useEffect(() => {
+    if (JSON.parse(localStorage.getItem('likes'))) {
+      const like = JSON.parse(localStorage.getItem('likes'))[product.name]?.like
+      if (like) {
+        setProduct({ ...product, like: true })
+      } else {
+        setProduct({ ...product, like: false })
+      }
+    }
+  }, [])
 
   document.querySelectorAll('.shade').forEach(elem => {
     elem.addEventListener('click', ({ target }) => {
@@ -44,14 +55,6 @@ export const ProductInfo = () => {
       setProduct({ ...product, size: target.id })
     })
   })
-  useEffect(() => {
-    const like = JSON.parse(localStorage.getItem('likes'))[product.name]?.like
-    if (like) {
-      setProduct({ ...product, like: true })
-    } else {
-      setProduct({ ...product, like: false })
-    }
-  }, [])
 
   const validateSubmission = () => {
     if (!product.size) return false

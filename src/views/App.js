@@ -6,6 +6,7 @@ import {
   Navigate
 } from 'react-router-dom'
 
+import Big from 'big.js'
 const { faker } = require('@faker-js/faker');
 
 import {
@@ -38,7 +39,15 @@ const App = () => {
           const products = {}
           data.map((item) => {
             const rand = Math.floor(Math.random() * 1000)
-            const price = rand.toLocaleString('pt-br', { style: 'currency', currency: 'BRL' })
+            const description = faker.lorem.sentence(Math.floor(Math.random() * (50 - 20) + 20))
+            const formula = 10 + 2 * ((500 - description.length) / (3 - 2))
+            const big = new Big(formula).toFixed(2)
+            const price = new Intl.NumberFormat('pt-BR', {
+              style: 'currency',
+              currency: 'BRL',
+              minimumFractionDigits: 2
+            }).format(big)
+            console.log(price, big, description.length, item.length, formula)
             products[item] = {
               id: rand,
               name: item,
@@ -47,7 +56,7 @@ const App = () => {
               color: "default",
               size: null,
               quantity: 1,
-              description: faker.lorem.sentence(20)
+              description
             }
           })
           localStorage.setItem('products', JSON.stringify(products))
