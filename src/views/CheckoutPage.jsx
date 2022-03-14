@@ -1,20 +1,31 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect } from 'react'
 import { Container, Col, Row } from 'react-bootstrap'
-import { useSelector, useDispatch } from 'react-redux'
+import { useSelector } from 'react-redux'
 import { BagIcon } from '../assets/icons'
 
-import { Checkout } from "./components"
+import { Checkout } from './components'
 
 export const CheckoutPage = () => {
   const userBag = useSelector(state => state.db.userBag)
   const [bag, setBag] = useState([])
 
   useEffect(() => {
-      for (const property in userBag.bag) {
-        setBag([...bag, {[property]: userBag.bag[property]}])
-      }
+    for (const property in userBag.bag) {
+      setBag([...bag, { ...userBag.bag[property] }])
+    }
   }, [])
 
+  const numerify = (str) => {
+    switch (str) {
+      case 'one': return 1
+      case 'two': return 2
+      case 'three': return 3
+      case 'four': return 4
+      case 'five': return 5
+    }
+  }
+
+  console.log(bag)
 
   return (
     <Container>
@@ -25,13 +36,30 @@ export const CheckoutPage = () => {
           </div>
           <h1>Sacola de Compras</h1>
         </Col>
-        <Col xs={12} className="product-list">
-          <div>Descrição</div>
-          <div>Qntd</div>
-          <div>Preço</div>
-          <div>Subtotal</div>
-        </Col>
-        < Checkout name="Hefler" color="c" size="2" quantity="1" price="R$ 200,00" id={200}/>
+        {
+          bag
+            ? (
+            <>
+            {
+              bag.map(item => (
+                <Checkout
+                  key={item.name}
+                  name={item.name}
+                  size={numerify(item.size)}
+                  color={item.color}
+                  quantity={item.quantity}
+                  price={item.price}
+                  id={item.id}
+                />
+              ))
+            }
+            </>
+              )
+            : (
+                'No Item to Display'
+              )
+
+        }
         <Col className="finish-buy" xs={12}>
           <div className="left-container">
             <input type="text" className="delivery"/>

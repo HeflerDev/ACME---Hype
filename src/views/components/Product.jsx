@@ -13,7 +13,7 @@ export const Product = ({ name, imageId, status, price }) => (
     <Link to={`/product/${name}`}className="product-container">
     <div className="image">
       {
-        status
+        status(name)
           ? (
         <div className="icon">
           <EnabledLikeIcon />

@@ -1,8 +1,8 @@
-import React from 'react';
-import { Col, Image } from 'react-bootstrap';
-import PropTypes from 'prop-types';
+import React from 'react'
+import { Col, Image } from 'react-bootstrap'
+import PropTypes from 'prop-types'
 
-import { Shade, Size } from "./"
+import { Shade, Size } from './'
 
 export const Checkout = ({
   name,
@@ -32,9 +32,9 @@ export const Checkout = ({
       <div className="pricelabel">Price:</div>
       <div className="quantitylabel">Quantity</div>
       <div className="totallabel">Total</div>
-      <div className="price">R$ 200,00</div>
-      <div className="quantity">2</div>
-      <div className="total">R$ 400,00</div>
+      <div className="price">{price}</div>
+      <div className="quantity">{quantity}</div>
+      <div className="total">599</div>
       <div className="closebtn"></div>
     </Col>
 )

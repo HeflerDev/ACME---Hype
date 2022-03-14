@@ -1,8 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import { Container, Col, Row, Image } from 'react-bootstrap'
-import { useSelector } from 'react-redux'
+import { useSelector, useDispatch } from 'react-redux'
 import { useParams, Link } from 'react-router-dom'
-import { useDispatch } from 'react-redux'
 import { grab, giveBack } from '../redux/slices/dbSlice'
 
 import DefaultImage from '../assets/images/default.png'
@@ -28,7 +27,8 @@ export const ProductInfo = () => {
     like: data[name].like,
     color: data[name].color,
     size: data[name].size,
-    quantity: data[name].quantity
+    quantity: data[name].quantity,
+    description: data[name].description
   })
 
   useEffect(() => {
@@ -52,6 +52,13 @@ export const ProductInfo = () => {
         setProduct({ ...product, size: target.id })
       })
     })
+
+    const like = JSON.parse(localStorage.getItem('likes'))[product.name]?.like
+    if (like) {
+      setProduct({ ...product, like: true })
+    } else {
+      setProduct({ ...product, like: false })
+    }
   }, [])
 
   const validateSubmission = () => {
@@ -93,16 +100,24 @@ export const ProductInfo = () => {
   }
 
   const handleLike = () => {
-    localStorage.setItem('likes', JSON.stringify(
-        {
-          [product.name]: {
-            name: product.name,
-            like: product.like
-          }
-        }
-      ))
-  }
+    if (product.like) {
+      setProduct({ ...product, like: false })
+    } else {
+      setProduct({ ...product, like: true })
+    }
 
+    const likes = JSON.parse(localStorage.getItem('likes'))
+
+    localStorage.setItem('likes', JSON.stringify(
+      {
+        ...likes,
+        [product.name]: {
+          name: product.name,
+          like: !product.like
+        }
+      }
+    ))
+  }
 
   const handleRemove = () => {
     dispatch(giveBack(data[name].name))
@@ -113,7 +128,7 @@ export const ProductInfo = () => {
     <Row className="product-info">
       <Col xs={12} className="image">
         <Image fluid src={`https://picsum.photos/id/${data[name].id}/300/300`} onError={(e) => e.target.src = DefaultImage}/>
-        <div className="icon" onClick={() => product.like ? setProduct({ ...product, like: false }) : setProduct({ ...product, like: true })}>
+        <div className="icon" onClick={handleLike}>
           {
             product.like
               ? (
@@ -141,7 +156,7 @@ export const ProductInfo = () => {
         </div>
 
         <div className="description">
-          Lorem ipsum dolor sit amet, consectetur adipisicing elit. Libero nam unde accusamus iure quaerat minima dicta aliquam optio vel corporis praesentium fugit ad cum sint at alias modi, cumque voluptatem.
+          {product.description}
         </div>
 
         <div className="color-container">
@@ -176,7 +191,7 @@ export const ProductInfo = () => {
         </div>
 
         <div className="bag-button" onClick={() => validateBag() ? handleRemove() : handleBuy()}>
-          <div className="text">{validateBag() ? "Retirar da Sacola" : "Colocar na Sacola"}</div>
+          <div className="text">{validateBag() ? 'Retirar da Sacola' : 'Colocar na Sacola'}</div>
           <div className="icon">
             <BagIcon color="red" />
           </div>
@@ -187,7 +202,7 @@ export const ProductInfo = () => {
           <div className="quantity">
             <div
               onClick={() => handleCounter('-')}
-              className={product.quantity === 1 ? "disable" : ''}
+              className={product.quantity === 1 ? 'disable' : ''}
               >-</div>
             <div id="quantity-number">{product.quantity && product.quantity}</div>
             <div onClick={() => handleCounter('+')}>+</div>

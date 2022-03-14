@@ -1,25 +1,26 @@
 import React from 'react'
 import { Col } from 'react-bootstrap'
 import { UserIcon, BagIcon, EnabledLikeIcon, HouseIcon, ListIcon } from '../assets/icons'
+import { Link } from 'react-router-dom'
 
 export const MobileFooter = () => {
   return (
     <Col className="footer-icons">
-      <div className="home icon">
+      <Link to="/" className="home icon">
         <HouseIcon />
-      </div>
-      <div className="categories icon">
+      </Link>
+      <Link to="/categories" className="categories icon">
           <ListIcon />
-      </div>
-      <div className="favorites icon">
+      </Link>
+      <Link to="/favorites" className="favorites icon">
         <EnabledLikeIcon color="black"/>
-      </div>
-      <div className="bag icon">
+      </Link>
+      <Link to="/checkout" className="bag icon">
         <BagIcon />
-      </div>
-      <div className="user icon">
+      </Link>
+      <Link to="/user" className="user icon">
         <UserIcon />
-      </div>
+      </Link>
     </Col>
   )
 }

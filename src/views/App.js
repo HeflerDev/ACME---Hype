@@ -6,6 +6,8 @@ import {
   Navigate
 } from 'react-router-dom'
 
+const { faker } = require('@faker-js/faker');
+
 import {
   Header,
   MobileFooter,
@@ -44,7 +46,8 @@ const App = () => {
               like: false,
               color: "default",
               size: null,
-              quantity: 1
+              quantity: 1,
+              description: faker.lorem.sentence(20)
             }
           })
           localStorage.setItem('products', JSON.stringify(products))

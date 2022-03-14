@@ -20,6 +20,7 @@
   },
   "homepage": "https://github.com/HeflerDev/ACME---Hype#readme",
   "dependencies": {
+    "@faker-js/faker": "^6.0.0-beta.0",
     "@reduxjs/toolkit": "^1.8.0",
     "bootstrap": "^5.1.3",
     "browser-sync": "^2.27.7",
@@ -33,7 +34,8 @@
     "react-redux": "^7.2.6",
     "react-router-dom": "^6.2.2",
     "redux": "^4.1.2",
-    "sass-lint-config-file": "^1.1.0"
+    "sass-lint-config-file": "^1.1.0",
+    "txtgen": "^3.0.1"
   },
   "devDependencies": {
     "@babel/core": "^7.17.5",

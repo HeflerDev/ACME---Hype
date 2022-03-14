@@ -6,6 +6,10 @@ import { useSelector } from 'react-redux'
 export const Products = () => {
   const data = useSelector(state => state.db.data)
 
+  const checkLike = (key) => {
+    return JSON.parse(localStorage.getItem('likes'))[key]?.like
+  }
+
   return (
 
 <Container fluid="md">
@@ -16,7 +20,7 @@ export const Products = () => {
           <Product
             name={data[item].name}
             imageId={data[item].id}
-            status={false}
+            status={() => checkLike(data[item].name)}
             key={`${data[item].id}${data[item].name}`}
             price={data[item].price}
           />
