@@ -1,0 +1,11 @@
+.products-container{
+  justify-content: center;
+  font-family: 'Amatic SC', cursive;
+  margin: 20px auto !important;
+}
+
+@include media-breakpoint-up(sm) {
+  .products-container {
+    justify-content: space-evenly;
+  }
+}

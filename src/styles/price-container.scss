@@ -1,0 +1,29 @@
+.price-container {
+  margin: 10px auto;
+  width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+
+  > .price {
+    font-size: 32px;
+    margin-right: auto;
+    color: $secondary;
+    -webkit-text-stroke: 1px $secondary;
+  }
+
+  > .info {
+    font-size: 20px;
+    margin: auto auto 6px;
+    margin-top: auto;
+    margin-bottom: 6px;
+  }
+
+  > .icons {
+    width: 64px;
+    display: flex;
+    justify-content: space-around;
+    margin-left: auto;
+    margin-bottom: 10px;
+    > .icon { margin-top: auto; width: 24px;}
+  }
+}

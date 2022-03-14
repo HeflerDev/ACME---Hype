@@ -1,0 +1,26 @@
+.quantity-container {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  margin: 10px auto;
+
+  > .text {
+    color: blue;
+    text-decoration: underline !important;
+    font-size: 18px;
+    margin-top: auto;
+  }
+
+  > .quantity {
+    color: $dark;
+    display: flex;
+    width: 100px;
+    justify-content: space-around;
+    background-color: $lighter-gray;
+    border-radius: 5px;
+    font-size: 24px;
+    -webkit-text-stroke: 1px $dark;
+    > .disable { opacity: 0.5; }
+  }
+
+}

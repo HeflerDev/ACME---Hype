@@ -1,0 +1,64 @@
+.color-container {
+  display: flex;
+  flex-wrap: wrap;
+  width: 100%;
+  > .title {
+    width: 100%;
+    font-size: 1.3rem;
+  }
+
+  > .shade {
+    cursor: pointer;
+    width: 32px;
+    height: 32px;
+    display: flex;
+    justify-content: center;
+    margin: 10px 5px 10px 0;
+  }
+
+  > .smshade {
+    width: 16px;
+    height: 16px;
+    display: flex;
+    justify-content: center;
+    margin: auto 10px;
+  }
+
+  > .c {
+    background-color: cyan;
+  }
+
+  > .m {
+    background-color: magenta;
+  }
+
+  > .y {
+    background-color: yellow;
+  }
+
+  > .k {
+    background-color: black;
+  }
+
+  > .null {
+    background-color: white;
+    position: relative;
+    overflow: hidden;
+    border: solid black 2px;
+    &::after {
+      content: "";
+      position: absolute;
+      width: 46px;
+      background-color: black;
+      height: 2px;
+      top: 11px;
+      right:-12px;
+      transform: rotate(-45deg);
+    }
+  }
+
+  > .activecolor {
+    border: solid $secondary 3px;
+    transition: 0.2s;
+  }
+}

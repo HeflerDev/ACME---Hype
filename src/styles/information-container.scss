@@ -1,0 +1,21 @@
+.information-container {
+  display: flex;
+  flex-wrap: wrap;
+  background-color: $sand-yellow;
+  border-radius: 5px;
+  margin: 10px auto;
+  padding-top: 12px;
+  > .stars {
+    display: flex;
+    > svg { width: 20px; margin: 0 5px; }
+  }
+
+  > .evaluations {
+    margin-left: auto;
+  }
+
+  > .description {
+    margin:  1rem auto;
+    font-size: 1.2rem;
+  }
+}

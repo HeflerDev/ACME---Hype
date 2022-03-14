@@ -1,0 +1,19 @@
+.comment-container {
+  display: flex;
+  background-color: $sand-yellow;
+  width: 100%;
+  margin: 10px auto;
+  padding: 5px;
+
+  > .avatar {
+    width: 30px;
+    height: 30px;
+    background-color: $dark;
+    margin: auto 5px auto;
+    border-radius: 50%;
+  }
+
+  > .comment {
+    margin: 0 auto auto 5px ;
+  }
+}
