@@ -1,7 +1,0 @@
-export { Header } from './Header.jsx'
-export { MobileFooter } from './MobileFooter.jsx'
-export { Products } from './Products.jsx'
-export { Footer } from './Footer.jsx'
-export { ProductInfo } from './ProductInfo.jsx'
-export { CheckoutPage } from './CheckoutPage.jsx'
-export { LikedProducts } from './LikedProducts.jsx'

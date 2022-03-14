@@ -1,9 +1,0 @@
-.footer-container {
-  display: none;
-}
-
-@include media-breakpoint-up(lg) {
-  .footer-container {
-    display:flex;
-  }
-}
