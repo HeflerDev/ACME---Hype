@@ -40,14 +40,14 @@ const App = () => {
           data.map((item) => {
             const rand = Math.floor(Math.random() * 1000)
             const description = faker.lorem.sentence(Math.floor(Math.random() * (50 - 20) + 20))
-            const formula = 10 + 2 * ((500 - description.length) / (3 - 2))
+            const formula = 10 + item.split(' ').length * ((500 - description.length) / (3 - item.split(' ').length))
             const big = new Big(formula).toFixed(2)
             const price = new Intl.NumberFormat('pt-BR', {
               style: 'currency',
               currency: 'BRL',
               minimumFractionDigits: 2
             }).format(big)
-            console.log(price, big, description.length, item.length, formula)
+            console.log(item.split(' ').length)
             products[item] = {
               id: rand,
               name: item,

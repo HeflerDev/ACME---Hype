@@ -4,8 +4,7 @@ export const dbSlice = createSlice({
   name: 'db',
   initialState: {
     data: null,
-    userBag: {
-    },
+    userBag: {},
     userInventory: {}
   },
   reducers: {
@@ -16,7 +15,7 @@ export const dbSlice = createSlice({
       state.userBag = { ...state.userBag, [action.payload.name]: action.payload }
     },
     giveBack: (state, action) => {
-      state.userBag = { ...state.userBag, [action.payload]: null }
+      delete state.userBag[action.payload]
     },
     buy: (state, action) => {
       state.userInventory = { ...state.userInventory, inventory: action.payload }
