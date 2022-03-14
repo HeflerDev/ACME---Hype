@@ -7,13 +7,7 @@ import { Checkout } from './components'
 
 export const CheckoutPage = () => {
   const userBag = useSelector(state => state.db.userBag)
-  const [bag, setBag] = useState([])
-
-  useEffect(() => {
-    for (const property in userBag.bag) {
-      setBag([...bag, { ...userBag.bag[property] }])
-    }
-  }, [])
+  const [bag, setBag] = useState([{ ...userBag }])
 
   const numerify = (str) => {
     switch (str) {

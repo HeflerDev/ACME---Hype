@@ -27,5 +27,6 @@ export const Products = () => {
         ))
       }
     </Row>
-    </Container>  )
+    </Container>
+  )
 }

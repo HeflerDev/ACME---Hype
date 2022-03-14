@@ -20,39 +20,31 @@ export const ProductInfo = () => {
   const userBag = useSelector(state => state.db.userBag)
   const dispatch = useDispatch()
   const { name } = useParams()
-  const [product, setProduct] = useState({
-    name: data[name].name,
-    id: data[name].id,
-    price: data[name].price,
-    like: data[name].like,
-    color: data[name].color,
-    size: data[name].size,
-    quantity: data[name].quantity,
-    description: data[name].description
+  const [product, setProduct] = useState({ ...data[name] })
+
+  console.log(product.like)
+
+  document.querySelectorAll('.shade').forEach(elem => {
+    elem.addEventListener('click', ({ target }) => {
+      document.querySelector('.activecolor').classList.remove('activecolor')
+      elem.classList.add('activecolor')
+      setProduct({ ...product, color: target.id })
+    })
   })
 
+  document.querySelectorAll('.size').forEach(elem => {
+    elem.addEventListener('click', ({ target }) => {
+      const sizeElem = document.querySelector('.activesize')
+      if (sizeElem) {
+        sizeElem.classList.remove('activesize')
+        elem.classList.add('activesize')
+      } else {
+        elem.classList.add('activesize')
+      }
+      setProduct({ ...product, size: target.id })
+    })
+  })
   useEffect(() => {
-    document.querySelectorAll('.shade').forEach(elem => {
-      elem.addEventListener('click', ({ target }) => {
-        document.querySelector('.activecolor').classList.remove('activecolor')
-        elem.classList.add('activecolor')
-        setProduct({ ...product, color: target.id })
-      })
-    })
-
-    document.querySelectorAll('.size').forEach(elem => {
-      elem.addEventListener('click', ({ target }) => {
-        const sizeElem = document.querySelector('.activesize')
-        if (sizeElem) {
-          sizeElem.classList.remove('activesize')
-          elem.classList.add('activesize')
-        } else {
-          elem.classList.add('activesize')
-        }
-        setProduct({ ...product, size: target.id })
-      })
-    })
-
     const like = JSON.parse(localStorage.getItem('likes'))[product.name]?.like
     if (like) {
       setProduct({ ...product, like: true })
@@ -67,7 +59,7 @@ export const ProductInfo = () => {
   }
 
   const validateBag = () => {
-    if (userBag.bag[data[name].name]) {
+    if (userBag[data[name].name]) {
       return true
     }
     return false
@@ -86,16 +78,17 @@ export const ProductInfo = () => {
   const handleBuy = () => {
     const submission = validateSubmission()
     if (submission) {
-      submission[product.name] = {
-        name: product.name,
-        id: product.id,
-        price: product.price,
-        like: product.like,
-        color: product.color,
-        size: product.size,
-        quantity: product.quantity
-      }
-      dispatch(grab(submission))
+      dispatch(grab(
+        {
+          name: product.name,
+          id: product.id,
+          price: product.price,
+          like: product.like,
+          color: product.color,
+          size: product.size,
+          quantity: product.quantity
+        }
+      ))
     }
   }
 
