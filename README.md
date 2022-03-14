@@ -7,6 +7,9 @@
 
 <br />
 <div align="center">
+  <a href="https://github.com/heflerdev/Invest-Platform">
+    <img src="src/assets/images/exp.jpg" alt="Logo" width="160" style="border-radius: 10px;" height="160">
+  </a>
   <h3 align="center">ACME Challenge</h3>
 
   <p align="center">
