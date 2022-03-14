@@ -28,7 +28,7 @@ export const CheckoutPage = () => {
           'Content-Type': 'application/json'
         },
         body: JSON.stringify(userBag)
-      }).then(() => dispatch(clear())) 
+      }).then(() => dispatch(clear()))
     }
   }
 
