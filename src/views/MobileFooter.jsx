@@ -12,7 +12,7 @@ export const MobileFooter = () => {
       <Link to="/categories" className="categories icon">
           <ListIcon />
       </Link>
-      <Link to="/favorites" className="favorites icon">
+      <Link to="/likes" className="favorites icon">
         <EnabledLikeIcon color="black"/>
       </Link>
       <Link to="/checkout" className="bag icon">

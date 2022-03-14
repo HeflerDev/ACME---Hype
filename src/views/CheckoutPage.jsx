@@ -1,12 +1,14 @@
 import React, { useState, useEffect } from 'react'
 import { Container, Col, Row } from 'react-bootstrap'
-import { useSelector } from 'react-redux'
+import { useSelector, useDispatch } from 'react-redux'
+import { clear } from '../redux/slices/dbSlice'
 import { BagIcon } from '../assets/icons'
 
 import { Checkout } from './components'
 
 export const CheckoutPage = () => {
   const userBag = useSelector(state => state.db.userBag)
+  const dispatch = useDispatch()
 
   const numerify = (str) => {
     switch (str) {
@@ -23,10 +25,10 @@ export const CheckoutPage = () => {
       fetch('/checkout', {
         method: 'POST',
         headers: {
-          "Content-Type": 'application/json'
+          'Content-Type': 'application/json'
         },
         body: JSON.stringify(userBag)
-      }).then((response) => {console.log(response)})
+      }).then(() => dispatch(clear())) 
     }
   }
 

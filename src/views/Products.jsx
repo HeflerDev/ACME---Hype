@@ -18,7 +18,7 @@ export const Products = () => {
 
   return (
 
-<Container fluid="md">
+<Container fluid="md" className="_fullpage">
   <Row className="products-container">
       {
         data &&

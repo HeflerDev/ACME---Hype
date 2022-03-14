@@ -24,17 +24,17 @@ export const LikedProducts = () => {
         data &&
         Object.keys(data).map(item => (
           <>
-          {
-            checkLike(data[item].name) && (
-              <Product
-                name={data[item].name}
-                imageId={data[item].id}
-                status={() => checkLike(data[item].name)}
-                key={`${data[item].id}${data[item].name}`}
-                price={data[item].price}
-              />
-            )
-          }
+            {
+              checkLike(data[item].name) && (
+                <Product
+                  name={data[item].name}
+                  imageId={data[item].id}
+                  status={() => checkLike(data[item].name)}
+                  key={`${data[item].id}${data[item].name}`}
+                  price={data[item].price}
+                />
+              )
+            }
           </>
         ))
       }

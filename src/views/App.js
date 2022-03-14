@@ -7,7 +7,6 @@ import {
 } from 'react-router-dom'
 
 import Big from 'big.js'
-const { faker } = require('@faker-js/faker');
 
 import {
   Header,
@@ -22,6 +21,7 @@ import { useSelector, useDispatch } from 'react-redux'
 import { stash } from '../redux/slices/dbSlice'
 
 import AcmeCatalog from '../assets/images/acme-catalog.png'
+const { faker } = require('@faker-js/faker')
 
 const catalogStyle = {
   backgroundImage: `linear-gradient(to bottom,rgba(250, 250, 150, 0.5), rgba(250, 250, 150, 0.5)), url(${AcmeCatalog})`,
@@ -52,7 +52,7 @@ const App = () => {
               name: item,
               price,
               like: false,
-              color: "default",
+              color: 'default',
               size: null,
               quantity: 1,
               description
@@ -79,7 +79,8 @@ const App = () => {
       <HashRouter>
         {
           db && (
-            <section className="page-container" style={catalogStyle}>
+            <>
+            <section className="page-container _fullpage" style={catalogStyle}>
              <Header />
               <Routes>
                 <Route path="/" element={<Products />} />
@@ -91,9 +92,10 @@ const App = () => {
                   element={<Navigate replace to="/" />}
                 />
               </Routes>
-             <MobileFooter />
-             <Footer />
             </section>
+               <MobileFooter />
+               <Footer />
+</>
           )
         }
       </HashRouter>
