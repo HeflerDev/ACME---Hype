@@ -8,7 +8,6 @@ import { Checkout } from './components'
 export const CheckoutPage = () => {
   const userBag = useSelector(state => state.db.userBag)
 
-
   const numerify = (str) => {
     switch (str) {
       case 'one': return 1
@@ -16,6 +15,18 @@ export const CheckoutPage = () => {
       case 'three': return 3
       case 'four': return 4
       case 'five': return 5
+    }
+  }
+
+  const handleSubmit = () => {
+    if (Object.keys(userBag).length !== 0) {
+      fetch('/checkout', {
+        method: 'POST',
+        headers: {
+          "Content-Type": 'application/json'
+        },
+        body: JSON.stringify(userBag)
+      }).then((response) => {console.log(response)})
     }
   }
 
@@ -67,7 +78,7 @@ export const CheckoutPage = () => {
             <div className="price">R$ 00,00</div>
             <div className="total">Total</div>
             <div className="price total">R$ 00,00</div>
-            <div className="buybtn _btn-primary">Finalizar compra</div>
+            <div className="buybtn _btn-primary" onClick={handleSubmit}>Finalizar compra</div>
           </div>
         </Col>
       </Row>
